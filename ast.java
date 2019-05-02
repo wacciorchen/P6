@@ -131,8 +131,8 @@ class ProgramNode extends ASTnode {
         myDeclList = L;
     }
 	
-	public void codeGen(){
-		myDeclList.codeGen(true);
+	public void codeGen(){ // MODIFY
+		myDeclList.codeGen();
 	}
 
     /**
@@ -440,6 +440,8 @@ abstract class DeclNode extends ASTnode {
 
     // default version of typeCheck for non-function decls
     public void typeCheck() { }
+    //MODIFY
+    public void codeGen() {}
 }
 
 class VarDeclNode extends DeclNode {
@@ -2275,6 +2277,8 @@ abstract class BinaryExpNode extends ExpNode {
         myExp2 = exp2;
     }
 	
+    public void opCode() { }
+
 	public void codeGen() {
 		myExp1.codeGen();
 		myExp2.codeGen();
